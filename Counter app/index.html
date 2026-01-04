@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+
+    body{
+        background-color: aqua;
+    }
+    #count{
+        font-size: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#increase{
+    padding: 10px 20px;
+    color: wheat;
+    background-color: green;
+    margin: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+#decrease{
+        padding: 10px 20px;
+    color: wheat;
+    background-color: red;
+    margin: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+#reset{
+        padding: 10px 20px;
+    color: wheat;
+    background-color: blue;
+    margin: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+  
+
+  </style>
+  <body>
+    <h1 id="count">0</h1>
+
+    <div class="btn-wrapper">
+            <button id="increase">Increase</button>
+    <button id="decrease">Decrease</button>
+    <button id="reset">Reset</button>
+
+    </div>
+
+
+  </body>
+
+  <script>
+    let count = 0;
+
+    const increase = (document.getElementById("increase").onclick =
+      function () {
+        count += 1;
+        document.getElementById("count").innerHTML = count;
+
+        const decrease = (document.getElementById("decrease").onclick =
+          function () {
+            count -= 1;
+            document.getElementById("count").innerHTML = count;
+          });
+
+        const reset = (document.getElementById("reset").onclick = function () {
+          count = 0;
+          document.getElementById("count").innerHTML = count;
+        });
+      });
+  </script>
+</html>
