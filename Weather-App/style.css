@@ -5,8 +5,20 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
+
+body.dark {
+  background: #121212;
+  color: #f1f1f1;
+}
+#themeToggle{
+    cursor: pointer;
+}
+
+body.dark .card {
+  background: #1e1e1e;
+}
+
 
 .weatherForm{
     margin: 20px;
