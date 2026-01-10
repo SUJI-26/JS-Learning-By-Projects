@@ -91,7 +91,6 @@ function getWeatherEmoji(weatherId) {
             return "❓";
     }
 }
-
 function displayError(message) {
     card.textContent = "";
     card.style.display = "flex";
@@ -102,8 +101,6 @@ function displayError(message) {
 
     card.appendChild(errorDisplay);
 }
-
-
 const themeToggle = document.getElementById("themeToggle");
 
 themeToggle.addEventListener("click", () => {
