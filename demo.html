@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pratice</title>
+    <style>
+      img {
+        height: 300px;
+        width: 300px;
+        border-radius: 20px;
+        background: linear-gradient(blue, red, green);
+      }
+      button {
+        background-color: rebeccapurple;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      .container,
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="img">
+        <!-- <img src="./Suji image 1.png"> -->
+        <button id="btn">Change</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const image = document.querySelector("img");
+    const button = document.getElementById("btn");
+
+    button.addEventListener("click", () => {
+      alert("Your Button is clicked");
+    });
+    console.log(button);
+  </script>
+</html>
