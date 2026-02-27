@@ -3,19 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>weather-App</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <form class="weatherForm">
-      <input type="text" placeholder="Enter Your City" class="cityInput" />
-      <button type="submit">Check</button>
-    
-    </form>
-    <div class="card" style="display: none">
-    </div>
-    <button id="themeToggle">🌙</button>
+    <div class="card">
+      <div class="search">
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="Enter your city name"
+          spellcheck="false"
+        />
+        <button id="searchBtn">
+          <img src="./images/search.png" alt="Search" />
+        </button>
+      </div>
 
+      <div class="weather">
+        <img
+          src="./images/clouds.png"
+          class="weather-icon"
+          alt="Weather Icon"
+        />
+        <h1 class="temp">25°C</h1>
+        <h2 class="city">Chennai</h2>
+
+        <div class="details">
+          <div class="col">
+            <img src="./images/humidity.png" alt="Humidity" />
+            <div>
+              <p class="humidity">60%</p>
+              <p>Humidity</p>
+            </div>
+          </div>
+          <div class="col">
+            <img src="./images/wind.png" alt="Wind" />
+            <div>
+              <p class="wind">10 km/h</p>
+              <p>Wind Speed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
-  <script src="./script.js"></script>
+  <script src="./javascript/script.js"></script>
 </html>
