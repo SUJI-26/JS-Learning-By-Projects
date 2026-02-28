@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Money Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Money Tracker</h1>
+        <div class="period-controls">
+            <select id="periodSelect" aria-label="Select period">
+                <option value="all">All</option>
+                <option value="day">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+            </select>
+            <input type="date" id="dayPicker" aria-label="Pick a date" />
+            <button id="downloadDay" class="btn">Download Day CSV</button>
+            <button id="downloadWeek" class="btn">Download Week CSV</button>
+            <button id="downloadMonth" class="btn">Download Month CSV</button>
+            <button id="seedToday" class="btn" title="Add 3–4 sample expenses for today">Add Today's Sample</button>
+            <label class="budget-wrap" title="Set budget for current period">
+                <span>Budget</span>
+                <input type="number" id="budgetInput" min="0" step="0.01" placeholder="0.00" />
+            </label>
+            <button id="budgetQuick3k" class="btn small" title="Quick set budget to 3000">Set 3000</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Add Expense</h2>
+            <form id="expenseForm" autocomplete="off">
+                <div class="grid">
+                    <label>
+                        <span>Date</span>
+                        <input type="date" id="expenseDate" required />
+                    </label>
+                    <label>
+                        <span>Category</span>
+                        <select id="expenseCategorySelect" required>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Groceries">Groceries</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Health">Health</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </label>
+                    <label id="expenseCategoryCustomWrap" style="display:none">
+                        <span>Custom Category</span>
+                        <input type="text" id="expenseCategoryCustom" placeholder="Type category" />
+                    </label>
+                    <label>
+                        <span>Amount</span>
+                        <input type="number" id="expenseAmount" step="0.01" min="0" placeholder="0.00" required />
+                    </label>
+                    <label class="full">
+                        <span>Note (optional)</span>
+                        <input type="text" id="expenseNote" placeholder="Short description" />
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn primary">Add</button>
+                    <button type="reset" class="btn">Clear</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="summary">
+                <div>
+                    <div class="summary-label">Total</div>
+                    <div class="summary-value" id="sumTotal">0.00</div>
+                </div>
+                <div>
+                    <div class="summary-label">Items</div>
+                    <div class="summary-value" id="sumCount">0</div>
+                </div>
+                <div id="budgetAlert" class="alert" role="status" aria-live="polite" style="display:none"></div>
+            </div>
+            <div class="table-wrap">
+                <table id="expensesTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th class="right">Amount</th>
+                            <th>Note</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="expensesTbody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <span>Data is stored locally in your browser.</span>
+    </footer>
+    <section class="container">
+        <section class="card">
+            <h2>Spending Charts</h2>
+            <div class="charts-grid">
+                <div class="chart-item">
+                    <canvas id="catDonut" aria-label="Category spending distribution" role="img"></canvas>
+                </div>
+                <div class="chart-item">
+                    <canvas id="dailyLine" aria-label="Daily spending over time" role="img"></canvas>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" integrity="sha384-S1+8h2P1mWQK3q1n9ZfCqY8P8g8w8o3pHq5m7p2o5bKQm8u0kqQm6xgD1bq6o1y+" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script>
+        // Set defaults on load
+        (function initDefaults() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const iso = `${yyyy}-${mm}-${dd}`;
+            const dayPicker = document.getElementById('dayPicker');
+            const expenseDate = document.getElementById('expenseDate');
+            dayPicker.value = iso;
+            expenseDate.value = iso;
+        })();
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="/new.css" />
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <div class="container">
+    <h1>💸 Expense Tracker</h1>
+
+    <!-- Budget Section -->
+    <div class="budget-section">
+      <input type="number" id="budgetInput" placeholder="Set Monthly Budget (₹)" />
+      <button id="setBudgetBtn">Set Budget</button>
+      <div id="budgetDisplay">
+        Budget: ₹<span id="budgetValue">0</span> |
+        Spent: ₹<span id="spentValue">0</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+    </div>
+
+    <!-- Expense Form -->
+    <form id="expenseForm">
+      <input type="text" id="expenseName" placeholder="Expense name" required />
+      <input type="number" id="expenseAmount" placeholder="Amount" required />
+      <select id="expenseCategory">
+        <option>Food</option>
+        <option>Transport</option>
+        <option>Entertainment</option>
+        <option>Utilities</option>
+        <option>Other</option>
+      </select>
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <!-- Expense List -->
+    <ul id="expenseList"></ul>
+
+    <!-- Chart Section -->
+    <div class="chart-section">
+      <h3>📊 Spending Breakdown</h3>
+      <canvas id="expenseChart"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/new.js"></script>
+</body>
+</html>
